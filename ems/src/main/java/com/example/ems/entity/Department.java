@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 
@@ -43,4 +44,8 @@ public class Department {
     @ManyToMany(mappedBy = "departments", fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<Employee> employees = new HashSet<>();
+
+    @OneToOne(mappedBy = "department")
+    private Hod hod;
+
 }

@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  background-color: #1e293b;
+}
+
+.nav-btn {
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  background-color: #334155;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.nav-btn.active {
+  background-color: #2563eb;
+}

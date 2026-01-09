@@ -1,3 +1,4 @@
+import axios from "axios";
 const BASE_URL = "http://localhost:8080/api";
 
 export async function createEmployee(employee) {
@@ -93,3 +94,18 @@ export async function fetchDepartments() {
     return [];
   }
 }
+
+export const createHod = (hod) =>
+  axios.post("http://localhost:8080/api/hods", hod);
+
+export const fetchHods = () =>
+  axios.get("http://localhost:8080/api/hods");
+
+export const createProject = (project) =>
+  axios.post("http://localhost:8080/api/projects", project);
+
+export const fetchProjectsByEmployee = (employeeId) =>
+  axios.get(`http://localhost:8080/api/projects/employee/${employeeId}`);
+
+export const fetchAllProjects = () =>
+  axios.get("http://localhost:8080/api/projects");

@@ -8,8 +8,7 @@ import java.util.List;
 
 public class AllowedCityValidator implements ConstraintValidator<AllowedCity, String> {
 
-    private static final List<String> ALLOWED_CITIES =
-            List.of("Ahmedabad", "Surat", "Vadodara","Gandhinagar");
+    private static final List<String> ALLOWED_CITIES = List.of("ahmedabad", "surat", "vadodara", "gandhinagar");
 
     @Override
     public boolean isValid(String city, ConstraintValidatorContext context) {
@@ -18,10 +17,11 @@ public class AllowedCityValidator implements ConstraintValidator<AllowedCity, St
             return false;
         }
 
-        if (!ALLOWED_CITIES.contains(city)) {
+        String normalizedCity = city.trim().toLowerCase();
+
+        if (!ALLOWED_CITIES.contains(normalizedCity)) {
             throw new InvalidCityException(
-                    "Employee from " + city + " city is not allowed"
-            );
+                    "Employee from " + city + " city is not allowed");
         }
 
         return true;
