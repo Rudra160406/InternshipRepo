@@ -1,11 +1,12 @@
 package com.example.ems.dto;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.Set;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
-public record EmployeeDto(
-
+public record HodDto(
         @NotBlank(message = "Name is required")
         String name,
 
@@ -21,6 +22,7 @@ public record EmployeeDto(
         @NotNull(message = "Address is required")
         AddressDto address,
 
-        @NotEmpty(message = "At least one department is required")
-        Set<Long> departmentIds
-) {}
+        @NotNull(message = "Department ID is required")
+        Long departmentId
+) {
+}

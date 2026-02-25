@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import HodForm from "./HodForm";
 import HodList from "./HodList";
+import "../styles/form.css";
 
 const HodPage = () => {
-  const [refresh, setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(0);
 
   return (
-    <>
-      <HodForm onSuccess={() => setRefresh(!refresh)} />
-      <HodList key={refresh} />
-    </>
+    <div className="page-shell">
+      <h2 className="page-title">HOD Management</h2>
+      <HodForm onSuccess={() => setRefresh((prev) => prev + 1)} />
+      <HodList refresh={refresh} />
+    </div>
   );
 };
 

@@ -1,0 +1,104 @@
+2026-02-25 14:02:52.036 [main] INFO  org.springframework.test.context.support.AnnotationConfigContextLoaderUtils reqId= - Could not detect default configuration classes for test class [com.example.ems.EmployeeManagementSystemApplicationTests]: EmployeeManagementSystemApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-02-25 14:02:52.140 [main] INFO  org.springframework.boot.test.context.SpringBootTestContextBootstrapper reqId= - Found @SpringBootConfiguration com.example.ems.EmployeeManagementSystemApplication for test class com.example.ems.EmployeeManagementSystemApplicationTests
+2026-02-25 14:02:52.273 [main] INFO  org.springframework.boot.devtools.restart.RestartApplicationListener reqId= - Restart disabled due to context in which it is running
+2026-02-25 14:02:52.541 [main] INFO  com.example.ems.EmployeeManagementSystemApplicationTests reqId= - Starting EmployeeManagementSystemApplicationTests using Java 24.0.2 with PID 25060 (started by ASUS in D:\Internship\InternshipRepo\ems)
+2026-02-25 14:02:52.550 [main] INFO  com.example.ems.EmployeeManagementSystemApplicationTests reqId= - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 14:02:53.034 [background-preinit] INFO  org.hibernate.validator.internal.util.Version reqId= - HV000001: Hibernate Validator 9.0.1.Final
+2026-02-25 14:02:53.548 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate reqId= - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-25 14:02:53.619 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate reqId= - Finished Spring Data repository scanning in 59 ms. Found 3 JPA repository interfaces.
+2026-02-25 14:02:54.222 [main] INFO  org.hibernate.orm.jpa reqId= - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-25 14:02:54.336 [main] INFO  org.hibernate.orm.core reqId= - HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-25 14:02:54.750 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo reqId= - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-25 14:02:54.773 [main] INFO  com.zaxxer.hikari.HikariDataSource reqId= - HikariPool-1 - Starting...
+2026-02-25 14:02:54.888 [main] INFO  com.zaxxer.hikari.pool.HikariPool reqId= - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:ems_test_db user=SA
+2026-02-25 14:02:54.889 [main] INFO  com.zaxxer.hikari.HikariDataSource reqId= - HikariPool-1 - Start completed.
+2026-02-25 14:02:54.915 [main] WARN  org.hibernate.orm.deprecation reqId= - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-25 14:02:54.935 [main] INFO  org.hibernate.orm.connections.pooling reqId= - HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:ems_test_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: EMS_TEST_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-25 14:02:55.827 [main] INFO  org.hibernate.orm.core reqId= - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-25 14:02:55.883 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean reqId= - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-25 14:02:55.980 [main] INFO  org.springframework.data.jpa.repository.query.QueryEnhancerFactories reqId= - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-25 14:02:57.237 [main] WARN  org.springframework.boot.jpa.autoconfigure.JpaBaseConfiguration$JpaWebConfiguration reqId= - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-25 14:02:57.857 [main] INFO  com.example.ems.EmployeeManagementSystemApplicationTests reqId= - Started EmployeeManagementSystemApplicationTests in 5.594 seconds (process running for 7.106)
+2026-02-25 14:02:58.323 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean reqId= - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-25 14:02:58.338 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource reqId= - HikariPool-1 - Shutdown initiated...
+2026-02-25 14:02:58.340 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource reqId= - HikariPool-1 - Shutdown completed.
+2026-02-25 14:03:26.989 [main] INFO  org.springframework.test.context.support.AnnotationConfigContextLoaderUtils reqId= - Could not detect default configuration classes for test class [com.example.ems.EmployeeManagementSystemApplicationTests]: EmployeeManagementSystemApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-02-25 14:03:27.086 [main] INFO  org.springframework.boot.test.context.SpringBootTestContextBootstrapper reqId= - Found @SpringBootConfiguration com.example.ems.EmployeeManagementSystemApplication for test class com.example.ems.EmployeeManagementSystemApplicationTests
+2026-02-25 14:03:27.208 [main] INFO  org.springframework.boot.devtools.restart.RestartApplicationListener reqId= - Restart disabled due to context in which it is running
+2026-02-25 14:03:27.466 [main] INFO  com.example.ems.EmployeeManagementSystemApplicationTests reqId= - Starting EmployeeManagementSystemApplicationTests using Java 24.0.2 with PID 3048 (started by ASUS in D:\Internship\InternshipRepo\ems)
+2026-02-25 14:03:27.473 [main] INFO  com.example.ems.EmployeeManagementSystemApplicationTests reqId= - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 14:03:27.921 [background-preinit] INFO  org.hibernate.validator.internal.util.Version reqId= - HV000001: Hibernate Validator 9.0.1.Final
+2026-02-25 14:03:28.380 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate reqId= - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-25 14:03:28.444 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate reqId= - Finished Spring Data repository scanning in 55 ms. Found 3 JPA repository interfaces.
+2026-02-25 14:03:29.020 [main] INFO  org.hibernate.orm.jpa reqId= - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-25 14:03:29.150 [main] INFO  org.hibernate.orm.core reqId= - HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-25 14:03:29.570 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo reqId= - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-25 14:03:29.598 [main] INFO  com.zaxxer.hikari.HikariDataSource reqId= - HikariPool-1 - Starting...
+2026-02-25 14:03:29.710 [main] INFO  com.zaxxer.hikari.pool.HikariPool reqId= - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:ems_test_db user=SA
+2026-02-25 14:03:29.711 [main] INFO  com.zaxxer.hikari.HikariDataSource reqId= - HikariPool-1 - Start completed.
+2026-02-25 14:03:29.729 [main] WARN  org.hibernate.orm.deprecation reqId= - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-25 14:03:29.749 [main] INFO  org.hibernate.orm.connections.pooling reqId= - HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:ems_test_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: EMS_TEST_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-25 14:03:30.714 [main] INFO  org.hibernate.orm.core reqId= - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-25 14:03:30.765 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean reqId= - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-25 14:03:30.860 [main] INFO  org.springframework.data.jpa.repository.query.QueryEnhancerFactories reqId= - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-25 14:03:32.120 [main] WARN  org.springframework.boot.jpa.autoconfigure.JpaBaseConfiguration$JpaWebConfiguration reqId= - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-25 14:03:32.734 [main] INFO  com.example.ems.EmployeeManagementSystemApplicationTests reqId= - Started EmployeeManagementSystemApplicationTests in 5.534 seconds (process running for 6.865)
+2026-02-25 14:03:33.199 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean reqId= - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-25 14:03:33.211 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource reqId= - HikariPool-1 - Shutdown initiated...
+2026-02-25 14:03:33.213 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource reqId= - HikariPool-1 - Shutdown completed.
+2026-02-25 14:03:49.322 [main] INFO  org.springframework.test.context.support.AnnotationConfigContextLoaderUtils reqId= - Could not detect default configuration classes for test class [com.example.ems.EmployeeManagementSystemApplicationTests]: EmployeeManagementSystemApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-02-25 14:03:49.411 [main] INFO  org.springframework.boot.test.context.SpringBootTestContextBootstrapper reqId= - Found @SpringBootConfiguration com.example.ems.EmployeeManagementSystemApplication for test class com.example.ems.EmployeeManagementSystemApplicationTests
+2026-02-25 14:03:49.527 [main] INFO  org.springframework.boot.devtools.restart.RestartApplicationListener reqId= - Restart disabled due to context in which it is running
+2026-02-25 14:03:49.772 [main] INFO  com.example.ems.EmployeeManagementSystemApplicationTests reqId= - Starting EmployeeManagementSystemApplicationTests using Java 24.0.2 with PID 26792 (started by ASUS in D:\Internship\InternshipRepo\ems)
+2026-02-25 14:03:49.784 [main] INFO  com.example.ems.EmployeeManagementSystemApplicationTests reqId= - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 14:03:50.227 [background-preinit] INFO  org.hibernate.validator.internal.util.Version reqId= - HV000001: Hibernate Validator 9.0.1.Final
+2026-02-25 14:03:50.705 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate reqId= - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-25 14:03:50.762 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate reqId= - Finished Spring Data repository scanning in 48 ms. Found 3 JPA repository interfaces.
+2026-02-25 14:03:51.365 [main] INFO  org.hibernate.orm.jpa reqId= - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-25 14:03:51.432 [main] INFO  org.hibernate.orm.core reqId= - HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-25 14:03:51.785 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo reqId= - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-25 14:03:51.806 [main] INFO  com.zaxxer.hikari.HikariDataSource reqId= - HikariPool-1 - Starting...
+2026-02-25 14:03:51.919 [main] INFO  com.zaxxer.hikari.pool.HikariPool reqId= - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:ems_test_db user=SA
+2026-02-25 14:03:51.921 [main] INFO  com.zaxxer.hikari.HikariDataSource reqId= - HikariPool-1 - Start completed.
+2026-02-25 14:03:51.936 [main] WARN  org.hibernate.orm.deprecation reqId= - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-25 14:03:51.953 [main] INFO  org.hibernate.orm.connections.pooling reqId= - HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:ems_test_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: EMS_TEST_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-25 14:03:52.848 [main] INFO  org.hibernate.orm.core reqId= - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-25 14:03:52.895 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean reqId= - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-25 14:03:52.989 [main] INFO  org.springframework.data.jpa.repository.query.QueryEnhancerFactories reqId= - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-25 14:03:54.858 [main] INFO  com.example.ems.EmployeeManagementSystemApplicationTests reqId= - Started EmployeeManagementSystemApplicationTests in 5.339 seconds (process running for 6.625)
+2026-02-25 14:03:55.262 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean reqId= - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-25 14:03:55.271 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource reqId= - HikariPool-1 - Shutdown initiated...
+2026-02-25 14:03:55.272 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource reqId= - HikariPool-1 - Shutdown completed.

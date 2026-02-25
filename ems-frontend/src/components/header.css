@@ -1,19 +1,33 @@
 .header {
+  background: linear-gradient(90deg, #0f172a, #1e293b);
+  border-bottom: 1px solid #334155;
+  padding: 14px 22px;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  gap: 15px;
-  padding: 15px;
-  background-color: #1e293b;
+  gap: 14px;
+  align-items: center;
 }
 
 .nav-btn {
-  color: white;
+  color: #e2e8f0;
   text-decoration: none;
-  padding: 8px 14px;
+  padding: 9px 16px;
   background-color: #334155;
-  border-radius: 5px;
-  font-weight: 500;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: background-color 0.2s;
+}
+
+.nav-btn:hover {
+  background-color: #475569;
 }
 
 .nav-btn.active {
   background-color: #2563eb;
+  color: #ffffff;
 }

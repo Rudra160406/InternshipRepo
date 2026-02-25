@@ -1,111 +1,125 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:8080/api";
 
-export async function createEmployee(employee) {
-  let response;
+const api = axios.create({
+  baseURL: "http://localhost:8080/api",
+});
 
+const toError = (error, fallbackMessage) => {
+  const payload = error?.response?.data;
+  const details = payload?.details || payload;
+  const message =
+    payload?.message ||
+    details?.general ||
+    error?.message ||
+    fallbackMessage;
+
+  const wrapped = new Error(message);
+  wrapped.details =
+    details && typeof details === "object" && !Array.isArray(details)
+      ? details
+      : {};
+
+  return wrapped;
+};
+
+
+export const createEmployee = async (payload) => {
   try {
-    response = await fetch(`${BASE_URL}/employees`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(employee),
-    });
-  } catch (e) {
-    const error = new Error("Cannot reach backend server. Please try later.");
-    throw error;
+    const response = await api.post("/employees", payload);
+    return response.data;
+  } catch (error) {
+    throw toError(error, "Unable to create employee.");
   }
+};
 
-  let data = {};
+export const fetchEmployees = async () => {
   try {
-    data = await response.json();
-    // Ensure data is an object
-    if (typeof data !== "object" || data === null) {
-      data = {};
-    }
-  } catch (e) {
-    data = {}; 
+    const response = await api.get("/employees");
+    return Array.isArray(response.data) ? response.data : [];
+  } catch (error) {
+    throw toError(error, "Unable to fetch employees.");
   }
+};
 
-  if (!response.ok) {
-    if (Object.keys(data).length > 0) {
-      
-    const error = new Error("Validation failed");
-
-    const normalizedErrors = { ...data };
-
-    if (normalizedErrors.city) {
-      normalizedErrors["address.city"] = normalizedErrors.city;
-      delete normalizedErrors.city;
-    }
-
-    error.details = normalizedErrors;
-    throw error;
-    } else {
-      const error = new Error("Something went wrong on server.");
-      error.details = {}; 
-      throw error;
-    }
-  }
-
-  return data;
-}
-
-
-export async function fetchEmployees() {
-  let response;
-
+export const searchEmployees = async (params) => {
   try {
-    response = await fetch(`${BASE_URL}/employees`);
-  } catch (e) {
-    throw new Error("Unable to reach backend for employees.");
+    const response = await api.get("/employees/search", { params });
+    return Array.isArray(response.data) ? response.data : [];
+  } catch (error) {
+    throw toError(error, "Unable to search employees.");
   }
+};
 
-  if (!response.ok) {
-    const message = await response.text();
-    throw new Error(message || "Unable to fetch employees.");
-  }
-
+export const updateEmployee = async (id, payload) => {
   try {
-    const data = await response.json();
-    return Array.isArray(data) ? data : [];
-  } catch (e) {
-    return []; 
+    const response = await api.put(`/employees/${id}`, payload);
+    return response.data;
+  } catch (error) {
+    throw toError(error, "Unable to update employee.");
   }
-}
+};
 
-export async function fetchDepartments() {
-  let response;
-
+export const deleteEmployee = async (id) => {
   try {
-    response = await fetch(`${BASE_URL}/departments`);
-  } catch (e) {
-    throw new Error("Unable to reach backend for departments.");
+    await api.delete(`/employees/${id}`);
+  } catch (error) {
+    throw toError(error, "Unable to delete employee.");
   }
+};
 
-  if (!response.ok) {
-    const message = await response.text();
-    throw new Error(message || "Unable to fetch departments.");
-  }
 
+export const fetchDepartments = async () => {
   try {
-    const data = await response.json();
-    return Array.isArray(data) ? data : [];
-  } catch (e) {
-    return [];
+    const response = await api.get("/departments");
+    return Array.isArray(response.data) ? response.data : [];
+  } catch (error) {
+    throw toError(error, "Unable to fetch departments.");
   }
-}
+};
 
-export const createHod = (hod) =>
-  axios.post("http://localhost:8080/api/hods", hod);
 
-export const fetchHods = () =>
-  axios.get("http://localhost:8080/api/hods");
+export const createHod = async (payload) => {
+  try {
+    const response = await api.post("/hods", payload);
+    return response.data;
+  } catch (error) {
+    throw toError(error, "Unable to create HOD.");
+  }
+};
 
-export const createProject = (project) =>
-  axios.post("http://localhost:8080/api/projects", project);
+export const fetchHods = async () => {
+  try {
+    const response = await api.get("/hods");
+    return Array.isArray(response.data) ? response.data : [];
+  } catch (error) {
+    throw toError(error, "Unable to fetch HODs.");
+  }
+};
 
-export const fetchProjectsByEmployee = (employeeId) =>
-  axios.get(`http://localhost:8080/api/projects/employee/${employeeId}`);
 
-export const fetchAllProjects = () =>
-  axios.get("http://localhost:8080/api/projects");
+export const createProject = async (payload) => {
+  try {
+    const response = await api.post("/projects", payload);
+    return response.data;
+  } catch (error) {
+    throw toError(error, "Unable to create project.");
+  }
+};
+
+export const fetchProjectsByEmployee = async (employeeId) => {
+  try {
+    const response = await api.get(`/projects/employee/${employeeId}`);
+    return Array.isArray(response.data) ? response.data : [];
+  } catch (error) {
+    throw toError(error, "Unable to fetch employee projects.");
+  }
+};
+
+export const fetchAllProjects = async () => {
+  try {
+    const response = await api.get("/projects");
+    return Array.isArray(response.data) ? response.data : [];
+  } catch (error) {
+    throw toError(error, "Unable to fetch projects.");
+  }
+};

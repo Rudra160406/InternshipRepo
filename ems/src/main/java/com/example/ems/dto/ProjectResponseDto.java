@@ -2,6 +2,7 @@ package com.example.ems.dto;
 
 import lombok.*;
 import com.example.ems.entity.Address;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,4 +18,5 @@ public class ProjectResponseDto {
     private String employeeName;
     private String employeeEmail;
     private Address employeeAddress;
+    private List<SimpleDepartmentDto> employeeDepartments;
 }

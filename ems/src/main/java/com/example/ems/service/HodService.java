@@ -1,13 +1,13 @@
 package com.example.ems.service;
 
+import com.example.ems.dto.HodDto;
 import com.example.ems.dto.EmployeeResponseDto;
-import com.example.ems.entity.Hod;
 
 import java.util.List;
 
 public interface HodService {
 
-    EmployeeResponseDto createHod(Hod hod);
+    EmployeeResponseDto createHod(HodDto hodDto);
 
     List<EmployeeResponseDto> getAllHods();
 }

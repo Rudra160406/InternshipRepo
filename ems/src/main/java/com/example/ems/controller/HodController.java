@@ -1,9 +1,10 @@
 package com.example.ems.controller;
 
 import com.example.ems.dto.EmployeeResponseDto;
-import com.example.ems.entity.Hod;
+import com.example.ems.dto.HodDto;
 import com.example.ems.service.HodService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
@@ -21,9 +22,9 @@ public class HodController {
 
     @PostMapping
     public ResponseEntity<EmployeeResponseDto> createHod(
-            @RequestBody Hod hod
+            @Valid @RequestBody HodDto hodDto
     ) {
-        return ResponseEntity.ok(hodService.createHod(hod));
+        return ResponseEntity.ok(hodService.createHod(hodDto));
     }
 
     @GetMapping

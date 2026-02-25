@@ -1,9 +1,13 @@
 package com.example.ems.service.impl;
 
+import com.example.ems.dto.AddressDto;
 import com.example.ems.dto.EmployeeResponseDto;
+import com.example.ems.dto.HodDto;
 import com.example.ems.dto.SimpleDepartmentDto;
+import com.example.ems.entity.Address;
 import com.example.ems.entity.Department;
 import com.example.ems.entity.Hod;
+import com.example.ems.exception.ResourceNotFoundException;
 import com.example.ems.repository.DepartmentRepository;
 import com.example.ems.repository.EmployeeRepository;
 import com.example.ems.service.HodService;
@@ -22,15 +26,21 @@ public class HodServiceImpl implements HodService {
     private final DepartmentRepository departmentRepository;
 
     @Override
-    public EmployeeResponseDto createHod(Hod hod) {
+    public EmployeeResponseDto createHod(HodDto hodDto) {
 
-        log.info("Creating HOD with email: {}", hod.getEmail());
+        log.info("Creating HOD with email: {}", hodDto.email());
 
-        if (hod.getDepartment() != null && hod.getDepartment().getId() != null) {
-            Department dept = departmentRepository.findById(hod.getDepartment().getId())
-                    .orElseThrow(() -> new RuntimeException("Department not found"));
-            hod.setDepartment(dept);
-        }
+        Department dept = departmentRepository.findById(hodDto.departmentId())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Department not found with ID: " + hodDto.departmentId()));
+
+        Hod hod = new Hod();
+        hod.setName(hodDto.name());
+        hod.setEmail(hodDto.email());
+        hod.setSalary(hodDto.salary());
+        hod.setAddress(toAddress(hodDto.address()));
+        hod.setDepartment(dept);
+        hod.setDepartments(java.util.Set.of(dept));
 
         Hod savedHod = (Hod) employeeRepository.save(hod);
         log.info("HOD created successfully with ID: {}", savedHod.getId());
@@ -70,5 +80,9 @@ public class HodServiceImpl implements HodService {
                 hod.getAddress(),
                 deps
         );
+    }
+
+    private Address toAddress(AddressDto dto) {
+        return new Address(dto.city(), dto.state(), dto.pincode());
     }
 }

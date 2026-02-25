@@ -5,8 +5,10 @@ import com.example.ems.dto.EmployeeResponseDto;
 import com.example.ems.dto.SimpleDepartmentDto;
 import com.example.ems.entity.Address;
 import com.example.ems.entity.Department;
-import com.example.ems.entity.NormalEmployee;
 import com.example.ems.entity.Employee;
+import com.example.ems.entity.NormalEmployee;
+import com.example.ems.exception.InvalidDepartmentException;
+import com.example.ems.exception.ResourceNotFoundException;
 import com.example.ems.repository.DepartmentRepository;
 import com.example.ems.repository.EmployeeRepository;
 import com.example.ems.service.EmployeeService;
@@ -17,7 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -36,22 +37,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         log.info("Creating NORMAL employee with email: {}", dto.email());
 
         NormalEmployee employee = new NormalEmployee();
-        employee.setName(dto.name());
-        employee.setEmail(dto.email());
-        employee.setSalary(dto.salary());
+        applyEmployeeData(employee, dto);
 
-        log.debug("Fetching departments for IDs: {}", dto.departmentIds());
-        Set<Department> departments =
-                new HashSet<>(departmentRepository.findAllById(dto.departmentIds()));
-        employee.setDepartments(departments);
-
-        Address address = new Address();
-        address.setCity(dto.address().city());
-        address.setState(dto.address().state());
-        address.setPincode(dto.address().pincode());
-        employee.setAddress(address);
-
-        NormalEmployee savedEmployee = (NormalEmployee) employeeRepository.save(employee);
+        NormalEmployee savedEmployee = employeeRepository.save(employee);
 
         log.info("Employee created successfully with ID: {}", savedEmployee.getId());
 
@@ -74,6 +62,39 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employees;
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public EmployeeResponseDto getEmployeeById(Long id) {
+        Employee employee = employeeRepository.findById(id)
+                .filter(NormalEmployee.class::isInstance)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found with ID: " + id));
+        return toResponse(employee);
+    }
+
+    @Transactional
+    @Override
+    public EmployeeResponseDto updateEmployee(Long id, EmployeeDto dto) {
+        Employee existing = employeeRepository.findById(id)
+                .filter(NormalEmployee.class::isInstance)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found with ID: " + id));
+
+        applyEmployeeData(existing, dto);
+        Employee updated = employeeRepository.save(existing);
+
+        log.info("Employee updated successfully with ID: {}", updated.getId());
+        return toResponse(updated);
+    }
+
+    @Transactional
+    @Override
+    public void deleteEmployee(Long id) {
+        Employee existing = employeeRepository.findById(id)
+                .filter(NormalEmployee.class::isInstance)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found with ID: " + id));
+        employeeRepository.delete(existing);
+        log.info("Employee deleted successfully with ID: {}", id);
+    }
+
     private EmployeeResponseDto toResponse(Employee employee) {
 
         log.debug("Mapping employee entity to response DTO for ID: {}", employee.getId());
@@ -93,5 +114,23 @@ public class EmployeeServiceImpl implements EmployeeService {
                 employee.getAddress(),
                 deps
         );
+    }
+
+    private void applyEmployeeData(Employee employee, EmployeeDto dto) {
+        employee.setName(dto.name());
+        employee.setEmail(dto.email());
+        employee.setSalary(dto.salary());
+
+        Set<Department> departments = Set.copyOf(departmentRepository.findAllById(dto.departmentIds()));
+        if (departments.size() != dto.departmentIds().size()) {
+            throw new InvalidDepartmentException("One or more department IDs are invalid");
+        }
+        employee.setDepartments(departments);
+
+        Address address = new Address();
+        address.setCity(dto.address().city());
+        address.setState(dto.address().state());
+        address.setPincode(dto.address().pincode());
+        employee.setAddress(address);
     }
 }

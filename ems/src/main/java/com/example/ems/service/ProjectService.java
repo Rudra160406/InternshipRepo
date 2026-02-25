@@ -12,4 +12,10 @@ public interface ProjectService {
     List<ProjectResponseDto> getProjectsByEmployee(Long employeeId);
 
     List<ProjectResponseDto> getAllProjects();
+
+    ProjectResponseDto getProjectById(Long id);
+
+    ProjectResponseDto updateProject(Long id, ProjectDto projectDto);
+
+    void deleteProject(Long id);
 }

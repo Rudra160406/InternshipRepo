@@ -46,4 +46,23 @@ public class ProjectController {
         List<ProjectResponseDto> projects = projectService.getAllProjects();
         return ResponseEntity.ok(projects);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProjectResponseDto> getProjectById(@PathVariable Long id) {
+        return ResponseEntity.ok(projectService.getProjectById(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProjectResponseDto> updateProject(
+            @PathVariable Long id,
+            @Valid @RequestBody ProjectDto projectDto
+    ) {
+        return ResponseEntity.ok(projectService.updateProject(id, projectDto));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProject(@PathVariable Long id) {
+        projectService.deleteProject(id);
+        return ResponseEntity.noContent().build();
+    }
 }
