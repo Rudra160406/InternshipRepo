@@ -1,7 +1,6 @@
 package com.example.ems.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -50,7 +49,7 @@ public abstract class Employee {
     @Embedded
     private Address address;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "employee_department",
         joinColumns = @JoinColumn(name = "employee_id"),

@@ -32,6 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final DepartmentRepository departmentRepository;
 
     @Override
+    @Transactional
     public EmployeeResponseDto createEmployee(EmployeeDto dto) {
 
         log.info("Creating NORMAL employee with email: {}", dto.email());

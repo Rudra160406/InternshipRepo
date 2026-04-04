@@ -14,6 +14,7 @@ import com.example.ems.service.HodService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class HodServiceImpl implements HodService {
     private final DepartmentRepository departmentRepository;
 
     @Override
+    @Transactional
     public EmployeeResponseDto createHod(HodDto hodDto) {
 
         log.info("Creating HOD with email: {}", hodDto.email());
@@ -49,6 +51,7 @@ public class HodServiceImpl implements HodService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<EmployeeResponseDto> getAllHods() {
 
         log.info("Fetching all HODs");

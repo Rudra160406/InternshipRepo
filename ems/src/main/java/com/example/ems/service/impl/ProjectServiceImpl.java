@@ -46,18 +46,21 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ProjectResponseDto> getProjectsByEmployee(Long employeeId) {
         List<Project> projects = projectRepository.findByEmployeeId(employeeId);
         return projects.stream().map(this::mapToResponse).collect(Collectors.toList());
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ProjectResponseDto> getAllProjects() {
         List<Project> projects = projectRepository.findAll();
         return projects.stream().map(this::mapToResponse).collect(Collectors.toList());
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ProjectResponseDto getProjectById(Long id) {
         Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found with ID: " + id));
